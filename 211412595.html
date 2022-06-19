@@ -1,0 +1,329 @@
+
+<!-- 1 - Nesta página você deve criar um cabeçalho e um rodapé.
+2 - No corpo da página deve ter uma listagem de disciplinas que você já cursou e que está cursando neste ano separadas por módulos (módulo 51 e 52) com um breve comentário sobre o mesmo.
+3 - Seria interessante aplicar o seu conhecimento de CSS neste arquivo, a fim de deixa-lo mais apresentável, mas caso não consiga, não se preocupe, você não será prejudicado por isso. -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Disciplinas por Módulo</title>
+    <style>
+        /* Estilos Estruturais */
+
+        html {
+            min-height: 100%;
+            position: relative;
+        }
+
+        body {
+            background: linear-gradient(180deg, #FFFFFF 0%, rgb(116 115 115 / 20%) 100%);
+            background-color: #F6F6F6;
+            font: 100 16px 'Roboto', sans-serif;;
+            color: #323232;
+            padding: 0;
+            margin: 0;
+        }
+
+        body * {
+            box-sizing: border-box;
+        }
+
+        header {
+            padding: .8rem;
+            position: sticky;
+            top: 0px;
+            -webkit-box-shadow: 0 3px 10px rgba(57, 63, 72, 0.4);
+            -moz-box-shadow: 0 3px 10px rgba(57, 63, 72, 0.4);
+            box-shadow: 0 3px 10px rgba(57, 63, 72, 0.4);
+        }
+
+        header, footer {
+            background-color: #00dbf2;
+            color: #FFFFFF;
+            text-align: center;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-bottom: 5rem !important;
+        }
+
+        main, footer {
+            padding: 1.15rem;
+        }
+
+        footer {
+            position:absolute;
+            right: 0;
+            left: 0;
+            bottom: 0;
+        }
+
+        /* Elementos Básicos */
+
+        h1, h2 {
+            margin: .5rem 0;
+        }
+
+        h2 {
+            font-weight: 300;
+        }
+
+        h3 {
+            text-transform:uppercase;
+        }
+        main > section {
+            border: .1rem solid #c1d1cf;   
+            border-radius: 10px;
+            padding: 1rem;
+            min-width: 280px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        form div {
+            max-width: 350px;
+        }
+
+        input, button, select, textarea {
+            margin-bottom: 15px;
+            margin-top: 5px;
+        }
+
+        input, select, textarea {
+            background-color: #c1d1cf;
+            border: none;
+            border-radius: 10px;
+            padding: 8px;
+        }
+        
+        input, textarea {
+            width: 100%;
+        }
+
+        button {
+            background-color: #ff3e56;
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
+            color: #DBE3E2;
+            align-self: flex-end;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ff798a;
+        }
+
+        img {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 1;
+            max-width: 200px;
+        }
+
+        @media (max-width: 1000px) {
+            img {
+                display: none;
+            }
+        }
+
+        a {
+            text-decoration: none;
+            color: #323232;
+        }
+
+        a:hover {
+            color: #9b9b9b;
+        }
+
+        /* Classes */
+
+        .disciplinas-modulo {
+            display: none;
+            padding-left: 15px;
+        }
+
+        .disciplinas-modulo.ativo {
+            display: block;
+        }
+
+        .desc-input-container * {
+            vertical-align: top;
+        }
+
+        .cadastro-container {
+            flex: 1;
+            min-height: 380px;
+            display: none;
+        }
+
+        .cadastro-container.ativo {
+            display: block;
+        }
+
+        .cadastro-container h2 {
+            text-align: center;
+        }
+
+        .modulos-container {
+            flex: 2;
+        }
+
+        .titulo-modulo {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            cursor: pointer;
+            background-color: #ffd033;
+            border-radius: 10px;
+            padding: .6rem;
+            margin-bottom: 1rem;
+        }
+
+        .titulo-modulo::after {
+            content: '▲';
+        }
+
+        .titulo-modulo.ativo::after {
+            content: '▼';
+        }
+        .ativar-cadastro {
+            text-align: end;
+        }
+        .ativar-cadastro::before {
+            content: '>';
+        }
+
+    </style>
+</head>
+<body>
+    <a href="https://studeo.unicesumar.edu.br/" target="_blank"><img src="https://studeostatic.unicesumar.edu.br/img/logo-studeo-white-sm.png" alt="Logo Studeo Unicesumar"></a>
+    <header>
+        <h1>Disciplinas por Módulo</h1>
+        <h2>Curso de Sistemas para Internet</h2>
+    </header>
+    <main>
+        <section class="cadastro-container">
+            <h2>Cadastro de Disciplina</h2>
+            <form action="javascript:handleIt()">
+                <div>
+                    <label for="modulo">Módulo:</label>
+                    <select name="modulo" id="modulo" required>
+                        <option value="51">51</option>
+                        <option value="52">52</option> 
+                    </select> 
+                </div>
+                <div>
+                    <label for="nome">Nome da disciplina:</label>
+                    <input type="text" name="nome" id="nome" placeholder="Ex: Programação Front End">
+                </div>
+                <div>
+                    <label for="link">Link para a disciplina:</label>
+                    <input type="text" name="link" id="link" placeholder="Ex: https://studeo.unicesumar.edu.br/" required>
+                </div>
+                <div class="desc-input-container">
+                    <label for="desc">Descrição:</label>
+                    <textarea name="desc" id="desc" cols="30" rows="10" placeholder="O contéudo básico da disciplina" required></textarea> 
+                </div> 
+                <button type="submit" id="submit">Enviar</button>
+            </form>
+        </section>
+        <section class="modulos-container">
+            <section>
+                <div class="titulo-modulo">
+                    <h2>Módulo 51</h2>
+                    <p>(Período: outubro de 2021 à março de 2022)</p>    
+                </div>
+                <div class="disciplinas-modulo ativo">
+                    <article>
+                        <h3><a href="https://studeo.unicesumar.edu.br/#!/app/studeo/aluno/ambiente/disciplina/2022_EGRAD_SISIN4G-51_EGRAD_NGER020_006" target="_blank">GO - OPORTUNIDADES E RESULTADOS</a></h3>
+                        <p>Aborda alguns temas referentes ao mundo empregatício como o recrutamento, currículo, entrevista de emprego, gestão de tempo e finanças e  qualidade de vida.</p>
+                    </article>  
+                    <article>
+                        <h3><a href="https://studeo.unicesumar.edu.br/#!/app/studeo/aluno/ambiente/disciplina/2022_EGRAD_SISIN4G-51_EGRAD_NGER100_019" target="_blank">FUNDAMENTOS E ARQUITETURA DE COMPUTADORES</a></h3>
+                        <p>Dedica-se a história da computação e aos componentes de hardware. Aborda também conceitos de lógica para computação e sistemas de numeração.</p>
+                    </article>  
+                    <article>
+                        <h3><a href="https://studeo.unicesumar.edu.br/#!/app/studeo/aluno/ambiente/disciplina/2022_EGRAD_SISIN4G-51_EGRAD_NGER100_008" target="_blank">GESTÃO DE PESSOAS E DESENVOLVIMENTO DE EQUIPES</a> </h3>
+                        <p>Aborda conceitos da área de gestão de pessoas, como subsistemas de Recursos Humanos, planejamento de Recursos Humanos, Retenção e movimentação de talentos e a importância da comunicação na gestão de pessoas.</p>
+                    </article>     
+                </div>
+            </section>
+            <section>
+                <div class="titulo-modulo">
+                    <h2>Módulo 52</h2>
+                    <p>(Período: maio de 2022 à junho de 2022)</p>    
+                </div>
+                <div class="disciplinas-modulo ativo">
+                    <article>
+                        <h3><a href="https://studeo.unicesumar.edu.br/#!/app/studeo/aluno/ambiente/disciplina/2022_EGRAD_SISIN5G-52_EGRAD_SISIN100_006" target="_blank">ESTRUTURA DE DADOS I</a></h3>
+                        <p>Trata de estruturas lógicas avançadas como  tabelas; listas lineares: listas ordenadas, listas encadeadas, listas com disciplinas de acesso (pilha e fila) e ponteiros.</p>
+                    </article>  
+                    <article>
+                        <h3><a href="https://studeo.unicesumar.edu.br/#!/app/studeo/aluno/ambiente/disciplina/2022_EGRAD_SISIN5G-52_EGRAD_NGER100_053" target="_blank"> FORMAÇÃO SOCIOCULTURAL E ÉTICA II</a></h3>
+                        <p>Estudo de acontecimentos socioculturais (relações étnico-raciais, a história e a cultura afro-brasileira e indígena políticas educacionais da valorização das diversidades e dos direitos humanos. Políticas de Educação Ambiental e Sustentabilidade).</p>
+                    </article>  
+                    <article>
+                        <h3><a href="https://studeo.unicesumar.edu.br/#!/app/studeo/aluno/ambiente/disciplina/2022_EGRAD_SISIN5G-52_EGRAD_SISIN100_011" target="_blank"> PROGRAMAÇÃO FRONT END</a></h3>
+                        <p>Conceitos básicos de webdesign, Linguagens de marcação HTML (versão 05) e CSS (versão 03), Linguagem de programação Javascript e biblioteca Jquery.</p>
+                    </article>  
+                </div>
+            </section>
+        </section>
+    </main>
+    <footer>
+        <address>@Copyright 2022 por Helena Rentschler. Alguns direitos reservados.</address>
+    </footer>
+    <script>
+        const formulario = document.querySelector('.cadastro-container').classList.add('ativo');
+        const button = document.querySelector('#submit');
+        const titulosModulo = document.querySelectorAll('.titulo-modulo');
+        const articles = document.querySelectorAll('.disciplinas-modulo');
+        const moduloSections = document.querySelectorAll('.modulos-container section')
+        articles[0].classList.add('ativo');
+        articles[1].classList.remove('ativo');
+        titulosModulo[0].classList.add('ativo');
+
+        titulosModulo.forEach((titulo, index) => {
+            titulo.addEventListener('click', () => {
+                articles[index].classList.toggle('ativo');
+                titulosModulo[index].classList.toggle('ativo');
+            });
+        });
+
+        function handleIt() {
+            button.addEventListener('click', () => {
+                const moduloSelect = document.querySelector('#modulo');
+                const disciplinaInput = document.querySelector('#nome');
+                const linkInput = document.querySelector('#link'); 
+                const descInput = document.querySelector('#desc');
+                const moduloSections = document.querySelectorAll('.modulos-container section');
+                if(moduloSections.value != '' && disciplinaInput.value != '' && descInput.value != '') {
+                    if (moduloSelect.value == '51') {
+                    moduloSections[0].innerHTML += `<h3><a href='${linkInput.value}' target='_blank'>${disciplinaInput.value}</a></h3><p>${descInput.value}</p>`;
+                    } else if (moduloSelect.value == '52'){
+                        moduloSections[1].innerHTML += `<h3><a href='${linkInput.value}' target='_blank'>${disciplinaInput.value}</a></h3><p>${descInput.value}</p>`;
+                    }
+                } else {
+                    console.log('Preencha todas as informações.');
+                }  
+                localStorage.clear;
+            });
+        }
+    </script>
+</body>
+</html>
