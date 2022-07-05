@@ -152,15 +152,6 @@
 
         /* Classes */
 
-        .disciplinas-modulo {
-            display: none;
-            padding-left: 15px;
-        }
-
-        .disciplinas-modulo.ativo {
-            display: block;
-        }
-
         .desc-input-container * {
             vertical-align: top;
         }
@@ -179,28 +170,6 @@
             text-align: center;
         }
 
-        .modulos-container {
-            flex: 2;
-        }
-
-        .titulo-modulo {
-            display: flex;
-            align-items: center;
-            gap: .5rem;
-            cursor: pointer;
-            background-color: #ffd033;
-            border-radius: 10px;
-            padding: .6rem;
-            margin-bottom: 1rem;
-        }
-
-        .titulo-modulo::after {
-            content: '▲';
-        }
-
-        .titulo-modulo.ativo::after {
-            content: '▼';
-        }
         .ativar-cadastro {
             text-align: end;
         }
@@ -213,117 +182,59 @@
 <body>
     <a href="https://studeo.unicesumar.edu.br/" target="_blank"><img src="https://studeostatic.unicesumar.edu.br/img/logo-studeo-white-sm.png" alt="Logo Studeo Unicesumar"></a>
     <header>
-        <h1>Disciplinas por Módulo</h1>
-        <h2>Curso de Sistemas para Internet</h2>
+        <h1>Cadastro de Usuário</h1>
     </header>
     <main>
         <section class="cadastro-container">
-            <h2>Cadastro de Disciplina</h2>
-            <form action="javascript:handleIt()">
+            <h2>Cadastro</h2>
+            <form>
                 <div>
-                    <label for="modulo">Módulo:</label>
-                    <select name="modulo" id="modulo" required>
-                        <option value="51">51</option>
-                        <option value="52">52</option> 
-                    </select> 
+                    <label for="nome">Nome de Usuário</label>
+                    <input type="text" name="nome" id="nome" placeholder="Digite seu nome de usuário">
                 </div>
                 <div>
-                    <label for="nome">Nome da disciplina:</label>
-                    <input type="text" name="nome" id="nome" placeholder="Ex: Programação Front End">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" placeholder="Digite seu email" required>
                 </div>
                 <div>
-                    <label for="link">Link para a disciplina:</label>
-                    <input type="text" name="link" id="link" placeholder="Ex: https://studeo.unicesumar.edu.br/" required>
+                    <label for="telefone">Celular</label>
+                    <input type="tel" name="telefone" id="telefone" placeholder="Digite seu número de celular">
                 </div>
-                <div class="desc-input-container">
-                    <label for="desc">Descrição:</label>
-                    <textarea name="desc" id="desc" cols="30" rows="10" placeholder="O contéudo básico da disciplina" required></textarea> 
-                </div> 
+                <div>
+                    <label for="senha">Senha</label>
+                    <input type="password" name="senha" id="senha" placeholder="Digite uma senha" required>
+                </div>
                 <button type="submit" id="submit">Enviar</button>
             </form>
         </section>
-        <section class="modulos-container">
-            <section>
-                <div class="titulo-modulo">
-                    <h2>Módulo 51</h2>
-                    <p>(Período: outubro de 2021 à março de 2022)</p>    
+        <section class="cadastro-container">
+            <h2>Login</h2>
+            <form>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" placeholder="Digite seu email" required>
                 </div>
-                <div class="disciplinas-modulo ativo">
-                    <article>
-                        <h3><a href="https://studeo.unicesumar.edu.br/#!/app/studeo/aluno/ambiente/disciplina/2022_EGRAD_SISIN4G-51_EGRAD_NGER020_006" target="_blank">GO - OPORTUNIDADES E RESULTADOS</a></h3>
-                        <p>Aborda alguns temas referentes ao mundo empregatício como o recrutamento, currículo, entrevista de emprego, gestão de tempo e finanças e  qualidade de vida.</p>
-                    </article>  
-                    <article>
-                        <h3><a href="https://studeo.unicesumar.edu.br/#!/app/studeo/aluno/ambiente/disciplina/2022_EGRAD_SISIN4G-51_EGRAD_NGER100_019" target="_blank">FUNDAMENTOS E ARQUITETURA DE COMPUTADORES</a></h3>
-                        <p>Dedica-se a história da computação e aos componentes de hardware. Aborda também conceitos de lógica para computação e sistemas de numeração.</p>
-                    </article>  
-                    <article>
-                        <h3><a href="https://studeo.unicesumar.edu.br/#!/app/studeo/aluno/ambiente/disciplina/2022_EGRAD_SISIN4G-51_EGRAD_NGER100_008" target="_blank">GESTÃO DE PESSOAS E DESENVOLVIMENTO DE EQUIPES</a> </h3>
-                        <p>Aborda conceitos da área de gestão de pessoas, como subsistemas de Recursos Humanos, planejamento de Recursos Humanos, Retenção e movimentação de talentos e a importância da comunicação na gestão de pessoas.</p>
-                    </article>     
+                <div>
+                    <label for="senha">Senha</label>
+                    <input type="password" name="senha" id="senha" placeholder="Digite uma senha" required>
+                    <input type="checkbox" name="check" id="Check" value="true">
+                    <label for="check">Lembrar-me</label>
+                    <p><a href="/esqueceu-exemplo">Esqueceu a sua senha?</a></p>
                 </div>
-            </section>
-            <section>
-                <div class="titulo-modulo">
-                    <h2>Módulo 52</h2>
-                    <p>(Período: maio de 2022 à junho de 2022)</p>    
-                </div>
-                <div class="disciplinas-modulo ativo">
-                    <article>
-                        <h3><a href="https://studeo.unicesumar.edu.br/#!/app/studeo/aluno/ambiente/disciplina/2022_EGRAD_SISIN5G-52_EGRAD_SISIN100_006" target="_blank">ESTRUTURA DE DADOS I</a></h3>
-                        <p>Trata de estruturas lógicas avançadas como  tabelas; listas lineares: listas ordenadas, listas encadeadas, listas com disciplinas de acesso (pilha e fila) e ponteiros.</p>
-                    </article>  
-                    <article>
-                        <h3><a href="https://studeo.unicesumar.edu.br/#!/app/studeo/aluno/ambiente/disciplina/2022_EGRAD_SISIN5G-52_EGRAD_NGER100_053" target="_blank"> FORMAÇÃO SOCIOCULTURAL E ÉTICA II</a></h3>
-                        <p>Estudo de acontecimentos socioculturais (relações étnico-raciais, a história e a cultura afro-brasileira e indígena políticas educacionais da valorização das diversidades e dos direitos humanos. Políticas de Educação Ambiental e Sustentabilidade).</p>
-                    </article>  
-                    <article>
-                        <h3><a href="https://studeo.unicesumar.edu.br/#!/app/studeo/aluno/ambiente/disciplina/2022_EGRAD_SISIN5G-52_EGRAD_SISIN100_011" target="_blank"> PROGRAMAÇÃO FRONT END</a></h3>
-                        <p>Conceitos básicos de webdesign, Linguagens de marcação HTML (versão 05) e CSS (versão 03), Linguagem de programação Javascript e biblioteca Jquery.</p>
-                    </article>  
-                </div>
-            </section>
+                <button type="submit" id="submit">Enviar</button>
+        
+            </form>
         </section>
     </main>
     <footer>
         <address>@Copyright 2022 por Helena Rentschler. Alguns direitos reservados.</address>
     </footer>
     <script>
-        const formulario = document.querySelector('.cadastro-container').classList.add('ativo');
-        const button = document.querySelector('#submit');
-        const titulosModulo = document.querySelectorAll('.titulo-modulo');
-        const articles = document.querySelectorAll('.disciplinas-modulo');
-        const moduloSections = document.querySelectorAll('.modulos-container section')
-        articles[0].classList.add('ativo');
-        articles[1].classList.remove('ativo');
-        titulosModulo[0].classList.add('ativo');
-
-        titulosModulo.forEach((titulo, index) => {
-            titulo.addEventListener('click', () => {
-                articles[index].classList.toggle('ativo');
-                titulosModulo[index].classList.toggle('ativo');
-            });
+        const formularios = document.querySelectorAll('.cadastro-container');
+        
+        formularios.foreach(formulario => {
+          formulario.classList.Add('ativo')
         });
-
-        function handleIt() {
-            button.addEventListener('click', () => {
-                const moduloSelect = document.querySelector('#modulo');
-                const disciplinaInput = document.querySelector('#nome');
-                const linkInput = document.querySelector('#link'); 
-                const descInput = document.querySelector('#desc');
-                const moduloSections = document.querySelectorAll('.modulos-container section');
-                if(moduloSections.value != '' && disciplinaInput.value != '' && descInput.value != '') {
-                    if (moduloSelect.value == '51') {
-                    moduloSections[0].innerHTML += `<h3><a href='${linkInput.value}' target='_blank'>${disciplinaInput.value}</a></h3><p>${descInput.value}</p>`;
-                    } else if (moduloSelect.value == '52'){
-                        moduloSections[1].innerHTML += `<h3><a href='${linkInput.value}' target='_blank'>${disciplinaInput.value}</a></h3><p>${descInput.value}</p>`;
-                    }
-                } else {
-                    console.log('Preencha todas as informações.');
-                }  
-                localStorage.clear;
-            });
-        }
     </script>
 </body>
 </html>
