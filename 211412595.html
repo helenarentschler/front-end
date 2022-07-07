@@ -1,240 +1,371 @@
-
-<!-- 1 - Nesta página você deve criar um cabeçalho e um rodapé.
-2 - No corpo da página deve ter uma listagem de disciplinas que você já cursou e que está cursando neste ano separadas por módulos (módulo 51 e 52) com um breve comentário sobre o mesmo.
-3 - Seria interessante aplicar o seu conhecimento de CSS neste arquivo, a fim de deixa-lo mais apresentável, mas caso não consiga, não se preocupe, você não será prejudicado por isso. -->
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Disciplinas por Módulo</title>
     <style>
-        /* Estilos Estruturais */
+      /* Estilos Estruturais */
 
-        html {
-            min-height: 100%;
-            position: relative;
-        }
+      html {
+        min-height: 100%;
+        position: relative;
+      }
 
-        body {
-            background: linear-gradient(180deg, #FFFFFF 0%, rgb(116 115 115 / 20%) 100%);
-            background-color: #F6F6F6;
-            font: 100 16px 'Roboto', sans-serif;;
-            color: #323232;
-            padding: 0;
-            margin: 0;
-        }
+      body {
+        background-color: #ffffff;
+        font: 100 16px "Roboto", sans-serif;
+        color: #323232;
+        padding: 0;
+        margin: 0;
+      }
 
-        body * {
-            box-sizing: border-box;
-        }
+      body * {
+        box-sizing: border-box;
+      }
 
-        header {
-            padding: .8rem;
-            position: sticky;
-            top: 0px;
-            -webkit-box-shadow: 0 3px 10px rgba(57, 63, 72, 0.4);
-            -moz-box-shadow: 0 3px 10px rgba(57, 63, 72, 0.4);
-            box-shadow: 0 3px 10px rgba(57, 63, 72, 0.4);
-        }
+      header {
+        padding: 0.8rem;
+        position: sticky;
+        top: 0px;
+        -webkit-box-shadow: 0 3px 10px rgba(57, 63, 72, 0.4);
+        -moz-box-shadow: 0 3px 10px rgba(57, 63, 72, 0.4);
+        box-shadow: 0 3px 10px rgba(57, 63, 72, 0.4);
+      }
 
-        header, footer {
-            background-color: #00dbf2;
-            color: #FFFFFF;
-            text-align: center;
-        }
+      header,
+      footer {
+        background-color: #00dbf2;
+        color: #ffffff;
+        text-align: center;
+      }
 
-        main {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            padding-bottom: 5rem !important;
-        }
+      main {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding-bottom: 5rem !important;
+      }
 
-        main, footer {
-            padding: 1.15rem;
-        }
+      main,
+      footer {
+        padding: 1.15rem;
+      }
 
-        footer {
-            position:absolute;
-            right: 0;
-            left: 0;
-            bottom: 0;
-        }
+      footer {
+        position: absolute;
+        right: 0;
+        left: 0;
+        bottom: 0;
+      }
 
-        /* Elementos Básicos */
+      /* Elementos Básicos */
 
-        h1, h2 {
-            margin: .5rem 0;
-        }
+      h1,
+      h2 {
+        margin: 1.5rem 0;
+      }
 
-        h2 {
-            font-weight: 300;
-        }
+      h2 {
+        font-weight: 300;
+      }
 
-        h3 {
-            text-transform:uppercase;
-        }
-        main > section {
-            border: .1rem solid #c1d1cf;   
-            border-radius: 10px;
-            padding: 1rem;
-            min-width: 280px;
-        }
+      h3 {
+        text-transform: uppercase;
+      }
+      main > section {
+        border: 0.1rem solid #c1d1cf;
+        border-radius: 10px;
+        padding: 1rem;
+        min-width: 280px;
+      }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            max-width: 350px;
-            margin: 0 auto;
-        }
+      form {
+        display: flex;
+        flex-direction: column;
+        max-width: 350px;
+        margin: 0 auto;
+      }
 
-        form div {
-            max-width: 350px;
-        }
+      form div {
+        max-width: 350px;
+      }
 
-        input, button, select, textarea {
-            margin-bottom: 15px;
-            margin-top: 5px;
-        }
+      input,
+      button,
+      select,
+      textarea {
+        margin-bottom: 15px;
+        margin-top: 5px;
+      }
 
-        input, select, textarea {
-            background-color: #c1d1cf;
-            border: none;
-            border-radius: 10px;
-            padding: 8px;
-        }
-        
-        input, textarea {
-            width: 100%;
-        }
+      input,
+      select,
+      textarea {
+        background-color: #c1d1cf;
+        border: none;
+        border-radius: 10px;
+        padding: 8px;
+      }
 
-        button {
-            background-color: #ff3e56;
-            border: none;
-            padding: 10px;
-            border-radius: 10px;
-            color: #DBE3E2;
-            align-self: flex-end;
-            cursor: pointer;
-        }
+      input,
+      textarea {
+        width: 100%;
+      }
 
-        button:hover {
-            background-color: #ff798a;
-        }
+      button {
+        background-color: #ff3e56;
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+        color: #dbe3e2;
+        align-self: flex-end;
+        cursor: pointer;
+      }
 
+      button:hover {
+        background-color: #ff798a;
+      }
+
+      img {
+        position: fixed;
+        top: 30px;
+        left: 30px;
+        z-index: 1;
+        max-width: 200px;
+      }
+
+      @media (max-width: 1000px) {
         img {
-            position: fixed;
-            top: 30px;
-            left: 30px;
-            z-index: 1;
-            max-width: 200px;
+          display: none;
         }
+      }
 
-        @media (max-width: 1000px) {
-            img {
-                display: none;
-            }
-        }
+      a {
+        text-decoration: none;
+        color: blue;
+      }
 
-        a {
-            text-decoration: none;
-            color: blue;
-        }
+      a:hover {
+        color: #9b9b9b;
+      }
 
-        a:hover {
-            color: #9b9b9b;
-        }
+      .realce {
+        box-shadow: 5px 5px 15px #cecece;
+      }
 
-        /* Classes */
+      /* Classes */
 
-        .desc-input-container * {
-            vertical-align: top;
-        }
+      .desc-input-container * {
+        vertical-align: top;
+      }
 
-        .cadastro-container {
-            flex: 1;
-            min-height: 380px;
-            display: none;
-        }
+      .cadastro-container {
+        flex: 1;
+        min-height: 380px;
+        display: none;
+      }
 
-        .cadastro-container.ativo {
-            display: block;
-        }
+      .cadastro-container.ativo {
+        display: block;
+      }
 
-        .cadastro-container h2 {
-            text-align: center;
-        }
+      .cadastro-container h2 {
+        text-align: center;
+      }
 
-        .ativar-cadastro {
-            text-align: end;
-        }
-        .ativar-cadastro::before {
-            content: '>';
-        }
+      .ativar-cadastro {
+        text-align: end;
+      }
+      .ativar-cadastro::before {
+        content: ">";
+      }
 
+      #check {
+        width: auto;
+      }
+
+      #senha-p {
+        display: inline-block;
+        margin-left: 25px;
+      }
+
+      #or {
+        margin: 0 auto;
+      }
+
+      #cadastrar-entrar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+      }
+
+      #cadastrar-entrar p {
+        background-color: #00cf6f;
+        border-radius: 5px;
+        padding: 15px;
+        color: #ffffff;
+        font-weight: 500;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      #cadastrar-entrar a {
+        font-size: 1.2rem;
+        font-weight: 900;
+        color: #ffffff;
+      }
+
+      #cadastrar-entrar button {
+        align-self: center;
+        margin: 0;
+      }
     </style>
-</head>
-<body>
-    <a href="https://studeo.unicesumar.edu.br/" target="_blank"><img src="https://studeostatic.unicesumar.edu.br/img/logo-studeo-white-sm.png" alt="Logo Studeo Unicesumar"></a>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <a href="https://studeo.unicesumar.edu.br/" target="_blank"
+      ><img
+        src="https://studeostatic.unicesumar.edu.br/img/logo-studeo-white-sm.png"
+        alt="Logo Studeo Unicesumar"
+    /></a>
     <header>
-        <h1>Cadastro de Usuário</h1>
+      <h1>CADASTRO / LOGIN</h1>
     </header>
     <main>
-        <section class="cadastro-container">
-            <h2>Cadastro</h2>
-            <form>
-                <div>
-                    <label for="nome">Nome de Usuário</label>
-                    <input type="text" name="nome" id="nome" placeholder="Digite seu nome de usuário">
-                </div>
-                <div>
-                    <label for="email">Email</label>
-                    <input type="text" name="email" id="email" placeholder="Digite seu email" required>
-                </div>
-                <div>
-                    <label for="telefone">Celular</label>
-                    <input type="tel" name="telefone" id="telefone" placeholder="Digite seu número de celular">
-                </div>
-                <div>
-                    <label for="senha">Senha</label>
-                    <input type="password" name="senha" id="senha" placeholder="Digite uma senha" required>
-                </div>
-                <button type="submit" id="submit">Enviar</button>
-            </form>
-        </section>
-        <section class="cadastro-container">
-            <h2>Login</h2>
-            <form>
-                <div>
-                    <label for="email">Email</label>
-                    <input type="text" name="email" id="email" placeholder="Digite seu email" required>
-                </div>
-                <div>
-                    <label for="senha">Senha</label>
-                    <input type="password" name="senha" id="senha" placeholder="Digite uma senha" required>
-                    <input type="checkbox" name="check" id="Check" value="true">
-                    <label for="check">Lembrar-me</label>
-                    <p><a href="/esqueceu-exemplo">Esqueceu a sua senha?</a></p>
-                </div>
-                <button type="submit" id="submit">Enviar</button>
-        
-            </form>
-        </section>
+      <section class="cadastro-container" id="cadastro">
+        <h2>Cadastro</h2>
+        <form id="form-cadastro">
+          <div>
+            <label for="nome">Username</label>
+            <input
+              type="text"
+              name="nome"
+              id="nome"
+              placeholder="Digite seu username"
+            />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input
+              type="text"
+              name="email"
+              id="email-cadastro"
+              placeholder="Digite seu email"
+              required
+            />
+          </div>
+          <div>
+            <label for="telefone">Celular</label>
+            <input
+              type="tel"
+              name="telefone"
+              id="telefone"
+              placeholder="Digite seu número de celular"
+            />
+          </div>
+          <div>
+            <label for="senha">Senha</label>
+            <input
+              type="password"
+              name="senha"
+              id="senha-cadastro"
+              placeholder="Digite uma senha"
+              required
+            />
+          </div>
+          <button type="submit" id="submit">Entrar</button>
+        </form>
+      </section>
+      <section class="cadastro-container">
+        <h2>Login</h2>
+        <form>
+          <div>
+            <label for="email">Email</label>
+            <input
+              type="text"
+              name="email"
+              id="email-login"
+              placeholder="Digite seu email"
+              required
+            />
+          </div>
+          <p id="or">ou</p>
+          <div>
+            <label for="telefone">Celular</label>
+            <input
+              type="tel"
+              name="telefone"
+              id="telefone-login"
+              placeholder="Digite seu número de celular"
+            />
+          </div>
+          <div>
+            <label for="senha">Senha</label>
+            <input
+              type="password"
+              name="senha"
+              id="senha-login"
+              placeholder="Digite uma senha"
+              required
+            />
+            <input type="checkbox" name="check" id="check" value="true" />
+            <label for="check">Lembrar-me</label>
+            <p id="senha-p"><a href="#esqueci">Esqueceu a sua senha?</a></p>
+          </div>
+          <div id="cadastrar-entrar">
+            <p>Não tem conta? <a href="#cadastro">CADASTRAR</a></p>
+            <button type="submit" id="submit">Entrar</button>
+          </div>
+        </form>
+      </section>
+      <section class="cadastro-container" id="esqueci">
+        <h2>Esqueci minha senha</h2>
+        <form>
+          <div>
+            <p>Você recebera um link para troca de senha em seu email:</p>
+            <label for="email">Email</label>
+            <input
+              type="text"
+              name="email"
+              id="email-login"
+              placeholder="Digite seu email"
+              required
+            />
+          </div>
+          <button type="submit" id="submit">Enviar</button>
+        </form>
+      </section>
     </main>
     <footer>
-        <address>@Copyright 2022 por Helena Rentschler. Alguns direitos reservados.</address>
+      <address>
+        @Copyright 2022 por Helena Rentschler. Alguns direitos reservados.
+      </address>
     </footer>
     <script>
-        const formularios = document.querySelectorAll('.cadastro-container');
-        
-        formularios.forEach((formulario) => {
-          formulario.classList.add('ativo');
+      const formularios = document.querySelectorAll(".cadastro-container");
+
+      formularios.forEach((formulario) => {
+        formulario.classList.add("ativo");
+      });
+
+      $(document).ready(function () {
+        $("#cadastrar-entrar p").click(function () {
+          $("#cadastro").addClass("realce");
         });
+
+        $("#senha-p").click(function () {
+          $("#esqueci").addClass("realce");
+        });
+      });
     </script>
-</body>
+  </body>
 </html>
